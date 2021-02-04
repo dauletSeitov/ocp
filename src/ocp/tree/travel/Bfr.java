@@ -1,6 +1,5 @@
 package ocp.tree.travel;
 
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -20,7 +19,7 @@ public class Bfr {
         tree.getRoot().getRight().setRight(new Node("7", "seven"));
 
 
-        String found = get(tree, "3");
+        String found = get(tree, "7");
         System.out.println("found = " + found);
     }
 
@@ -33,13 +32,15 @@ public class Bfr {
             Node last = stack.poll();
             if (last == null) {
                 break;
+            } else if (last.getKey().equals(key)) {
+                return last.getData();
             }
-            System.out.println("last.getKey() = " + last.getKey());
+
+            System.out.println("visit = " + last.getKey());
             stack.offer(last.getLeft());
             stack.offer(last.getRight());
-
         }
-        return "ok";
+        return null;
     }
 
 }
