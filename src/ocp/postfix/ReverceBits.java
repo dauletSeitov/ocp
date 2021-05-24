@@ -1,19 +1,20 @@
 package ocp.postfix;
 
-public class BinaryString {
+public class ReverceBits {
 
     public static void main(String[] args) {
-        int i = new BinaryString().hammingWeight(200);
-        System.out.println("i = " + i);
+        String param = "11111111111111111111111111111101";
+        System.out.println("param.length() = " + param.length());
+//        int i = new ReverceBits().hammingWeight(4294967293);
+//        System.out.println("i = " + i);
     }
 
     public int hammingWeight(int n) {
 
-
-        System.out.println(Integer.toBinaryString(n));
-        long count = Integer.toBinaryString(n).chars().peek(System.out::println)
-                .filter(itm -> itm == 49)
-                .count();
-        return (int) count;
+        String s = Integer.toBinaryString(n);
+        StringBuilder stringBuffer = new StringBuilder("00000000000000000000000000000000");
+        stringBuffer.replace(32 - s.length(), 32, s).reverse();
+        return Integer.parseInt(stringBuffer.toString(), 2);
     }
 }
+
