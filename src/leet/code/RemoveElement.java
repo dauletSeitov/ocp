@@ -1,9 +1,13 @@
 package leet.code;
 
+import java.util.Arrays;
+
 public class RemoveElement {
     public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 2, 3};
-        removeElement(nums, 3);
+        int[] nums = new int[]{0, 1, 2, 2, 3, 0, 4, 2};
+        int i = removeElement(nums, 2);
+        System.out.println("nums = " + Arrays.toString(nums));
+        System.out.println("i = " + i);
     }
 
 
@@ -11,14 +15,17 @@ public class RemoveElement {
 
         int startIndex = 0;
         int endIndex = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (; ; ) {
             if (nums[startIndex] == val) {
                 endIndex++;
+                nums[startIndex] = nums[endIndex];
+            } else {
+                nums[startIndex] = nums[endIndex];
+                startIndex++;
+                endIndex++;
             }
-            nums[startIndex] = nums[endIndex];
-            startIndex++;
         }
-        return 0;
+        //return 0;
     }
 
 }
